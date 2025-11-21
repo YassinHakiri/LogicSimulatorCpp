@@ -1,0 +1,20 @@
+Réponse à la question E
+La méthode calc_output devrait être virtuelle car la classe Gate est destinée à être une classe de base pour différentes portes logiques (AND, OR, NOT, etc.). Chaque type de porte aura une implémentation différente de la méthode calc_output. En rendant cette méthode virtuelle, nous permettons aux classes dérivées de fournir leur propre implémentation de cette méthode.
+
+Mise à jour de Gate.h pour rendre calc_output virtuelle
+
+#pragma once
+#include <vector>
+#include "node.h"
+
+class Gate {
+public:
+    std::string name;
+    std::vector<Node> inputs;
+    Node output;
+
+    Gate(const std::string& inName, const std::vector<Node>& inInputs);
+
+    void show() const;
+    virtual int calc_output(); // Méthode virtuelle
+};
